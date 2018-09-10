@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Handler</title>
+   
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+        const state = {eventCount: 0};
+
+        const App = props => (
+            <div>
+                <p>There have been {state.eventCount} events</p>
+                <p><button onClick={increment}>React</button></p>
+                <p>You typed {state.userName}</p>
+                <p><input onChange={e => setState({userName: e.target.value})}/></p>
+            </div>
+        );
+
+        function increment() {
+            setState({eventCount: state.eventCount + 1})
+        }
+        
+        function setState(newState) {
+            Object.assign(state, newState);
+            renderApp();
+        }
+
+        function renderApp() {
+            ReactDOM.render(<App />, rootElement);
+        }
+        renderApp();
+        
+    </script>
+</body>
+</html>

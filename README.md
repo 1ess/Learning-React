@@ -7,3 +7,5 @@ React 学习记录
 4. [Validate-custom-React-component-Props-with-propTypes](https://github.com/GodzzZZZ/Learning-React/blob/master/04-Validate-custom-React-component-Props-with-propTypes/index.html)
 5. [Conditionally-render-component](https://github.com/GodzzZZZ/Learning-React/blob/master/05-Conditionally-render-component/index.html)
 6. [Re-rendering](https://github.com/GodzzZZZ/Learning-React/blob/master/06-Re-rendering/index.html)
+7. [Style-React-component-with-className-and-inline-styles](https://github.com/GodzzZZZ/Learning-React/blob/master/07-Style-React-component-with-className-and-inline-styles/index.html)
+8. [Event-Handler-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/08-Event-Handler-with-React/index.html)

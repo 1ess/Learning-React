@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Style</title>
+    <style>
+
+        .box {
+            border: 2px black solid;
+        }
+
+        .box--small {
+            width: 60px;
+            height: 60px;
+        }
+        .box--medium {
+            width: 120px;
+            height: 120px;
+        }
+        .box--large {
+            width: 180px;
+            height: 180px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+        //注意 JSX 中 style 属性传入对象
+        // const element = (
+        //     <div>
+        //         <div style={{paddingLeft: 20}}>
+        //             box
+        //         </div>
+        //     </div>
+        // );
+
+
+        //版本 1
+        // const element = (
+        //     <div>
+        //         <div className="box box--small" style={{paddingLeft: 20}}>
+        //             box
+        //         </div>
+        //     </div>
+        // );
+
+
+        //版本 2
+        // const props = {
+        //     className: 'box box--small',
+        //     style: {paddingLeft: 20}
+        // }
+        // const element = (
+        //     <div>
+        //         <div {...props}>
+        //             box
+        //         </div>
+        //     </div>
+        // );
+
+        
+        //版本 3
+        // const className = 'box box--small';
+        // const style = {paddingLeft: 20};
+        // const props = {
+        //     className,
+        //     style
+        // }
+        // const element = (
+        //     <div>
+        //         <div {...props}>
+        //             box
+        //         </div>
+        //     </div>
+        // );
+
+
+        //版本 4
+        // const Box = props => {
+        //     return (
+        //         <div>
+        //             <div className="box box--small" style={{paddingLeft: 20}} {...props} />
+        //         </div>
+        //     );
+        // }
+        // //style 会覆盖，paddingLeft 没有了
+        // const element = (
+        //     <div>
+        //         <Box style={{backgroundColor: 'lightblue'}}>small box</Box>
+        //     </div>
+        // );
+
+        //版本 5
+        const Box = ({className = '', style, ...rest}) => {
+            return (
+                <div>
+                    <div 
+                        className={`box ${className}`.trim()}
+                        style={{paddingLeft: 20, ...style}} 
+                        {...rest} 
+                    />
+                </div>
+            );
+        }
+        //style 会覆盖，paddingLeft 没有了
+        const element = (
+            <div>
+                <Box className="box--small" style={{backgroundColor: 'lightblue'}}>small box</Box>
+            </div>
+        );
+
+        ReactDOM.render(element, rootElement);
+
+        
+    </script>
+</body>
+</html>
