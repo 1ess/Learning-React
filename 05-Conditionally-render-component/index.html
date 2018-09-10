@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Conditionally Render</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+        
+        // const Message = ({message}) => (<div>{message}</div>);
+
+        const Message = ({message}) => {
+            return (<div>
+                        {message ? message : 'no message'}
+                    </div>);
+        }
+
+        // ReactDOM.render(<Message message="Hello World" />, rootElement);
+        //可以通过传递 null 来进行条件渲染
+        ReactDOM.render(<Message message={null} />, rootElement);
+
+
+
+    </script>
+</body>
+</html>

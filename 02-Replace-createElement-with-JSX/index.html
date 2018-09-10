@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSX</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+        
+        // const element = React.createElement('div', {className: 'container'}, 'Hello World!');
+        //注意：JSX 无法直接在浏览器运行，需要经过转译，我们使用 babel。
+        //JSX 与 HTML 类似，但是原理完全不同，JSX 本质是 JS 对象，是 createElement API 的语法糖。
+        //经过转译，我们可以发现就是 createElement()
+        // const element = <div className="container">Hello World!</div>;
+
+        const content = 'Hello World!';
+        const className = 'container';
+        //在 {} 中使用 JS 表达式
+        // const element = (<div className={className}>{content}</div>);
+        
+        const props = {
+            className,
+            children: content
+        };
+        //一种简写形式
+        const element = (
+            <div {...props} />
+        )
+
+        //className 被覆盖 
+        const element1 = (
+            <div className="my-class" {...props}/>
+        );
+        //props 中的 children 被覆盖
+        const element2 = (
+            <div {...props}>Hello React!</div>
+        );
+
+
+
+        ReactDOM.render(element2, rootElement);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>createElement API</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script type="text/javascript">
+        const rootElement = document.getElementById('root');
+        // const element = document.createElement('div');
+        // element.textContent = 'Hello World!';
+        // element.className = 'container';
+        // rootElement.appendChild(element);
+
+
+        const element = React.createElement('div', {className: 'container'}, 'Hello World!');
+        console.log(element);
+        //第二个对象参数被赋值给 props 属性，children 可以是单一对象或是数组，如 1，2，3
+        //也可以不显示使用 children，直接将内部对象按顺序传入，如 4，5
+        const element1 = React.createElement('div', {className: 'container', children: 'Hello World!'});
+        const element2 = React.createElement('div', {className: 'container', children: ['Hello World!']});
+        const element3 = React.createElement('div', {className: 'container', children: ['Hello World!', 'Hello React!']});
+        const element4 = React.createElement('div', {className: 'container'}, 'Hello World!', 'Hello React!');
+        const element5 = React.createElement('div', {className: 'container'}, 'Hello World!', 'Hello React!',);
+        
+        ReactDOM.render(element, rootElement);
+
+
+    </script>
+</body>
+</html>

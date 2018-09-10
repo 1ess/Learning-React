@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PropTypes</title>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- 只有 development 版本 propTypes 验证才有效 -->
+    <!-- <script src="https://unpkg.com/react@16.5.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.development.js"></script> -->
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+        
+        // const SayHello = props => (
+        //     <div>
+        //         Hello {props.firstName} {props.lastName}!
+        //     </div>
+        // )
+
+        // SayHello.propTypes = {
+        //     firstName: PropTypes.string.isRequired,
+        //     lastName: PropTypes.string.isRequired
+        // };
+
+        class SayHello extends React.Component {
+            //最好在类内进行验证
+            static propTypes = {
+                firstName: PropTypes.string.isRequired,
+                lastName: PropTypes.string.isRequired
+            };
+
+            render() {
+                const {firstName, lastName} = this.props;
+                return (
+                    <div>
+                        Hello {firstName}{' '}{lastName || 'Unknown'}!
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<SayHello firstName={0x19921213} />, rootElement);
+
+
+    </script>
+</body>
+</html>

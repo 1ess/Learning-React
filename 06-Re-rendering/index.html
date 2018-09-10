@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Re-rendering</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+    
+        // function tick() {
+        //     const time = new Date().toLocaleTimeString();
+        //     const element = `<div>It's <input value=${time} /></div>`
+        //     rootElement.innerHTML = element;
+        // }
+
+        // setInterval(tick, 1000);
+        
+        function tick() {
+            const time = new Date().toLocaleTimeString();
+            const element = <div>It's <input value={time}/></div>;
+            ReactDOM.render(element, rootElement);
+        }
+        // 打开控制台可以看到，只刷新必要的部分
+        setInterval(tick, 1000);
+
+
+
+
+    </script>
+</body>
+</html>
