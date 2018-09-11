@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class Component</title>
+   
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        class Counter extends React.Component {
+            constructor(...args) {
+                super(...args);
+                this.state = {count: 0};
+                //绑定 this
+                // this.handlerClick = this.handlerClick.bind(this);
+
+            }
+
+            // render() {
+            //     return (
+            //         <button onClick={()=> {
+            //             this.setState(({count})=> ({
+            //                 count: count + 1
+            //             }));
+            //         }}>
+            //             {this.state.count}
+            //         </button>
+            //     );
+            // }
+
+            // handlerClick() {
+            //     this.setState(({count})=> ({
+            //         count: count + 1
+            //     }));
+            // }
+
+            handlerClick = e => {
+                this.setState(({count})=>({
+                    count: count + 1 
+                }));
+            }
+
+            //直接给 onClick 赋值为非箭头函数时，注意 this 的绑定问题
+            //或者直接使用箭头函数
+            //使用箭头函数时，下面的 this 就是 箭头函数中的 this。
+            render() {
+                return (
+                    <button onClick={this.handlerClick}>
+                        {this.state.count}
+                    </button>
+                );
+            }
+        }
+        const rootElement = document.getElementById('root');
+        const element = <Counter />;
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+</html>
