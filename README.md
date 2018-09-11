@@ -9,3 +9,5 @@ React 学习记录
 6. [Re-rendering](https://github.com/GodzzZZZ/Learning-React/blob/master/06-Re-rendering/index.html)
 7. [Style-React-component-with-className-and-inline-styles](https://github.com/GodzzZZZ/Learning-React/blob/master/07-Style-React-component-with-className-and-inline-styles/index.html)
 8. [Event-Handler-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/08-Event-Handler-with-React/index.html)
+9. [Use-Component-State-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/09-Use-Component-State-with-React/index.html)
+10. [Use-Class-Component-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/10-Use-Class-Component-with-React/index.html)
