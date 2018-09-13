@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class Component</title>
+   
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        
+
+        class NameForm extends React.Component {
+            
+            state = {error: this.props.getErrorMessage('')};
+            handlerSubmit = e => {
+                e.preventDefault();
+                //使用上一课 3种方法获取 value 均可
+                const value = e.target.elements.username.value;
+                const error = this.props.getErrorMessage(value);
+                if (error) {
+                    alert(`error: ${error}`);
+                }else {
+                    alert(`success: ${value}`);
+                }
+            }
+
+            handlerChange = e => {
+                const {value} = e.target;
+                this.setState({error: this.props.getErrorMessage(value)});
+            }
+
+            render() {
+                const {error} = this.state;
+                return (
+                    <form onSubmit={this.handlerSubmit}>
+                        <label>
+                            Name:
+                            <input onChange={this.handlerChange}  type="text" 
+                                    name="username" 
+                                    ref={node => (this.inputNode = node)}/>   
+                        </label>
+                        {error?<div style={{color: "red"}}>{error}</div>:null}
+                        <button disabled={error} type="submit">Submit</button> 
+                    </form>
+                );
+            }
+        }
+
+        getErrorMessage = value => {
+            if (value.length < 3) {
+                return `should be 3 letters, only ${value.length} letters`;
+            }else if (!value.includes("s")) {
+                return `should has s letter`;
+            }
+            return null;
+        }
+        
+        const rootElement = document.getElementById('root');
+        const element = <NameForm getErrorMessage={this.getErrorMessage}/>;
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class Component</title>
+   
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        
+
+        class NameForm extends React.Component {
+            
+            handlerSubmit = e => {
+                e.preventDefault();
+                console.log(e.target);
+                console.log(e.target[0].value);
+                console.log(e.target.elements.username.value);
+                console.log(this.inputNode.value);
+            }
+
+            render() {
+                return (
+                    <form onSubmit={this.handlerSubmit}>
+                        <label>
+                            Name:
+                            <input  type="text" 
+                                    name="username" 
+                                    ref={node => (this.inputNode = node)}/>   
+                        </label>
+                        <button type="submit">Submit</button> 
+                    </form>
+                );
+            }
+        }
+        
+        const rootElement = document.getElementById('root');
+        const element = <NameForm />;
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+</html>
