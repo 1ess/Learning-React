@@ -11,3 +11,5 @@ React 学习记录
 8. [Event-Handler-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/08-Event-Handler-with-React/index.html)
 9. [Use-Component-State-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/09-Use-Component-State-with-React/index.html)
 10. [Use-Class-Component-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/10-Use-Class-Component-with-React/index.html)
+11. [Make-Basic-Form-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/11-Make-Basic-Form-with-React/index.html)
+12. [Make-Dynamic-Form-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/12-Make-Dynamic-Form-with-React/index.html)
