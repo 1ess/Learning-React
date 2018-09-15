@@ -13,3 +13,6 @@ React 学习记录
 10. [Use-Class-Component-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/10-Use-Class-Component-with-React/index.html)
 11. [Make-Basic-Form-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/11-Make-Basic-Form-with-React/index.html)
 12. [Make-Dynamic-Form-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/12-Make-Dynamic-Form-with-React/index.html)
+13. [Controlling-Form-Values-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/13-Controlling-Form-Values-with-React/index.html)
+14. [Use-the-key-prop-When-Rendering-a-List-With-React](https://github.com/GodzzZZZ/Learning-React/blob/master/14-Use-the-key-prop-When-Rendering-a-List-With-React/index.html)
+15. [Make-HTTP-requests-with-React](https://github.com/GodzzZZZ/Learning-React/blob/master/15-Make-HTTP-requests-with-React/index.html)
