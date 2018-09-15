@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class Component</title>
+   
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+        
+        class App extends React.Component {
+            static allItems = [
+                {id: 'a', value: 'apple'},
+                {id: 'o', value: 'orange'},
+                {id: 'g', value: 'grape'},
+                {id: 'p', value: 'pear'},
+            ];
+
+            // render() {
+            //     return (
+            //         <ul>
+            //             {App.allItems.map(item => (<li>{item.value}</li>))}
+            //         </ul>
+            //     );
+            // }
+
+            state = {items: []};
+            addItem = (item) => {
+                this.setState(({items}) => {
+                    return {
+                        items: [...items, App.allItems.find(i => !items.includes(i))]
+                    };
+                });
+            }
+            
+            removeItem = (item) => {
+                this.setState(({items}) => {
+                   return {
+                    items: items.filter(i => i !== item)
+                   } 
+                });
+            }
+
+            render() {
+                const {items} = this.state;
+                console.log(items);
+                {/*注意：div 在有 key 和没有 key 在删除时的区别*/}
+                return (
+                    <div>
+                        <button disabled={items.length >= App.allItems.length} onClick={this.addItem}>+</button>
+                        {
+                            items.map((item, index) => (
+                                <div key={item.id}>
+                                    <button onClick={() => this.removeItem(item)}>-</button>
+                                    <span>{item.value}</span>
+                                    <input />
+                                </div>
+                            ))
+                        }
+                    </div>
+                );
+            }
+        }
+        
+        const rootElement = document.getElementById('root');
+        const element = <App />;
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+</html>

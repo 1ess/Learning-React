@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class Component</title>
+   
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.5.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+        class UserEmail extends React.Component {
+
+            state = {email: undefined, loaded: false};
+            componentDidMount = () => {
+              axios({
+                  url: 'https://api.github.com/graphql',
+                  method: 'post',
+                  data: {
+                      query: `{
+                            user(login: "${this.props.username}") {
+                                email
+                            }
+                          }`
+                  },
+                  headers: {Authorization: 'bearer 48dbe3ec9c91032b07d92e5a1c2784bf2da680dd'},
+              }).then(response => {
+                  console.log(response);
+                  this.setState({
+                      loaded: true,
+                      email: response.data.data.user.email
+                  });
+              })
+            }
+            
+            render() {
+                return this.state.loaded ? this.state.email || 'Unknown' : 'loading...';
+            };
+        }
+        const username = 'GodzzZZZ';
+        const element = (
+            <div>
+                <div>
+                    {`@${username} email is `}
+                    <UserEmail username={username} />
+                </div>
+            </div>
+        );
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+</html>
