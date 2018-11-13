@@ -16,13 +16,42 @@
         
 
         class NameForm extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.ref = React.createRef();
+            }
             
+            // handlerSubmit = e => {
+            //     e.preventDefault();
+            //     console.log(e.target);
+            //     console.log(e.target[0].value);
+            //     console.log(e.target.elements.username.value);
+            //     console.log(this.inputNode.value);
+            //     console.log(this.inputNode);
+            // }
+
+            // render() {
+            //     return (
+            //         <form onSubmit={this.handlerSubmit}>
+            //             <label>
+            //                 Name:
+            //                 <input  type="text" 
+            //                         name="username" 
+            //                         ref={node => (this.inputNode = node)}/>   
+            //             </label>
+            //             <button type="submit">Submit</button> 
+            //         </form>
+            //     );
+            // }
+
             handlerSubmit = e => {
                 e.preventDefault();
                 console.log(e.target);
                 console.log(e.target[0].value);
                 console.log(e.target.elements.username.value);
-                console.log(this.inputNode.value);
+                console.log(this.ref.current);
+                console.log(this.ref);
             }
 
             render() {
@@ -32,7 +61,7 @@
                             Name:
                             <input  type="text" 
                                     name="username" 
-                                    ref={node => (this.inputNode = node)}/>   
+                                    ref={this.ref}/>   
                         </label>
                         <button type="submit">Submit</button> 
                     </form>
