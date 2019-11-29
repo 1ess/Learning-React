@@ -36,16 +36,19 @@
 
         //className 被覆盖 
         const element1 = (
-            <div className="my-class" {...props}/>
+            <div className="my-class" {...props} />
         );
-        //props 中的 children 被覆盖
+
         const element2 = (
+            <div className="my-class" {...props} className="my-class2"/>
+        );
+
+        //props 中的 children 被覆盖
+        const element3 = (
             <div {...props}>Hello React!</div>
         );
 
-
-
-        ReactDOM.render(element2, rootElement);
+        ReactDOM.render(element1, rootElement);
 
 
     </script>
